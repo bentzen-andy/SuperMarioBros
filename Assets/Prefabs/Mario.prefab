@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1380230465882805136}
   - component: {fileID: 8720397869844740442}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,10 +93,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5908575771130941537}
+  - component: {fileID: 2687781997673391334}
   - component: {fileID: 2984058765168080644}
   - component: {fileID: 6105868628663868292}
-  - component: {fileID: 2687781997673391334}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mario
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -120,6 +120,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2687781997673391334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669711749125938941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6ef86641f8d450ba2a329d8ca94c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0}
+  playerWidth: 0
+  moveSpeed: 5
+  maxJumpHeight: 5
+  maxJumpTime: 1
 --- !u!50 &2984058765168080644
 Rigidbody2D:
   serializedVersion: 4
@@ -157,19 +174,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.8, y: 1}
   m_Direction: 0
---- !u!114 &2687781997673391334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669711749125938941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad6ef86641f8d450ba2a329d8ca94c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
 --- !u!1 &6566611492669330427
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2865510718739335834}
   - component: {fileID: 6605252595284099320}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}

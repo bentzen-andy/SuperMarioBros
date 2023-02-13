@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class SideScrolling : MonoBehaviour {
-    
+
     private Transform player;
 
 
