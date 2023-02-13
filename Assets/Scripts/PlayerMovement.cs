@@ -64,8 +64,14 @@ public class PlayerMovement : MonoBehaviour {
     private void HorizontalMovement() {
         float directionX = Input.GetAxisRaw("Horizontal");
 
-        // if (directionX < 0 && velocity.x > 0) velocity.x = Mathf.MoveTowards(velocity.x, 0f, moveSpeed * Time.deltaTime);
-        // if (directionX > 0 && velocity.x < 0) velocity.x = Mathf.MoveTowards(velocity.x, 0f, moveSpeed * Time.deltaTime);
+        bool isChangingToDirectionRight = directionX > 0 && velocity.x < 0;
+        bool isChangingToDirectionLeft = directionX < 0 && velocity.x > 0;
+
+        if (isChangingToDirectionRight || isChangingToDirectionLeft) {
+            velocity.x = Mathf.MoveTowards(velocity.x, 0f, moveSpeed * Time.deltaTime);
+        }
+
+        HandleSpriteDirectionChange();
 
         velocity.x = Mathf.MoveTowards(velocity.x, directionX * moveSpeed, moveSpeed * Time.deltaTime);
     }
@@ -123,13 +129,20 @@ public class PlayerMovement : MonoBehaviour {
         if (other.gameObject.layer == LayerMask.NameToLayer("PowerUp")) return;
 
         // if player is moving down and hits something above him
-        // bool playerBumpedHeadDuringJump = (other.contacts[0].normal.y) < 0f;
-        bool playerBumpedHeadDuringJump = transform.DotProductTest(other.transform, Vector2.up);
+        bool playerBumpedHeadDuringJump = (other.contacts[0].normal.y) < 0f;
+        // bool playerBumpedHeadDuringJump = transform.DotProductTest(other.transform, Vector2.up);
 
         if (playerBumpedHeadDuringJump) {
             isJumping = false;
             velocity.y = 0f;
         }
+    }
+
+
+    // flips sprite depending on direction player is moving
+    private void HandleSpriteDirectionChange() {
+        if (velocity.x > 0) transform.eulerAngles = Vector3.zero;
+        if (velocity.x < 0) transform.eulerAngles = new Vector3(0f, 180f, 0f);
     }
 
 }
