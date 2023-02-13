@@ -11,8 +11,10 @@ public class PlayerMovement : MonoBehaviour {
     public float moveSpeed = 8f;
     public float maxJumpHeight = 5f;
     public float maxJumpTime = 1f;
-    public float jumpForce =>  (2f*maxJumpHeight)/(maxJumpTime/2f);
-    public float gravity => -(2f*maxJumpHeight)/(maxJumpTime*maxJumpTime/4f);
+
+    // derived values
+    public float jumpForce =>  (2f * maxJumpHeight) / (maxJumpTime / 2f);
+    public float gravity => -(2f * maxJumpHeight) / (maxJumpTime * maxJumpTime / 4f);
 
     public bool isGrounded {get; private set;}
     public bool isJumping {get; private set;}
@@ -29,10 +31,10 @@ public class PlayerMovement : MonoBehaviour {
         HorizontalMovement();
 
         isGrounded = rigidbody.Raycast(Vector2.down);
-
         if (isGrounded) GroundedMovement();
         else MidAirMovement();
 
+        ApplyVerticalBarriers();
         ApplyGravity();
     }
 
@@ -41,30 +43,37 @@ public class PlayerMovement : MonoBehaviour {
         Vector2 position = rigidbody.position;
         position += velocity * Time.fixedDeltaTime;
 
+        // get camera edges in world space
         Vector2 leftEdge = camera.ScreenToWorldPoint(Vector2.zero);
         Vector2 rightEdge = camera.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+
+        // clamp player position to camera edges
         position.x = Mathf.Clamp(position.x, leftEdge.x + playerWidth/2, rightEdge.x - playerWidth/2);
 
         rigidbody.MovePosition(position);
     }
 
 
+    // stops player from jumping if they hit their head
     void OnCollisionEnter2D(Collision2D other) {
-        bool playerBumpedHeadDuringJump = (other.contacts[0].normal.y) < 0f;
-        if (playerBumpedHeadDuringJump) {
-            isJumping = false;
-            velocity.y = 0f;
-        }
+        checkIfPlayerBumpedHead(other);
     }
 
 
+    // allows player to move left and right
     private void HorizontalMovement() {
-        float inputAxis = Input.GetAxisRaw("Horizontal");
-        velocity.x = Mathf.MoveTowards(velocity.x, inputAxis * moveSpeed, moveSpeed * Time.deltaTime);
+        float directionX = Input.GetAxisRaw("Horizontal");
+
+        // if (directionX < 0 && velocity.x > 0) velocity.x = Mathf.MoveTowards(velocity.x, 0f, moveSpeed * Time.deltaTime);
+        // if (directionX > 0 && velocity.x < 0) velocity.x = Mathf.MoveTowards(velocity.x, 0f, moveSpeed * Time.deltaTime);
+
+        velocity.x = Mathf.MoveTowards(velocity.x, directionX * moveSpeed, moveSpeed * Time.deltaTime);
     }
 
 
+    // allows player to jump
     private void GroundedMovement() {
+        // reset velocity
         velocity.y = Mathf.Max(velocity.y, 0f);
         isJumping = velocity.y > 0f;
 
@@ -76,6 +85,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
 
+    // allows player to jump higher by holding jump button
     private void MidAirMovement() { 
         if (Input.GetButtonUp("Jump")) {
             // Debug.Log("Not Jumping");
@@ -87,9 +97,39 @@ public class PlayerMovement : MonoBehaviour {
     }
 
 
+    // stops player if they hit a wall
+    private void ApplyVerticalBarriers() {
+        if (rigidbody.Raycast(Vector2.right)) {
+            velocity.x = Mathf.Min(velocity.x, 0f);
+        }
+        if (rigidbody.Raycast(Vector2.left)) {
+            velocity.x = Mathf.Max(velocity.x, 0f);
+        }
+    }
+
+
+    // applies gravity to player
     private void ApplyGravity() {
         if (isGrounded) return;
         float multiplier = isJumping ? 1f : 2f;
         float gravityWithMultiplier = gravity * multiplier;
-        velocity.y += gravityWithMultiplier * Time.deltaTime;}
+        velocity.y += gravityWithMultiplier * Time.deltaTime;
+    }
+
+
+    // stops player from jumping if they hit their head
+    private void checkIfPlayerBumpedHead(Collision2D other) {
+        // Mario can't bump his head on power ups
+        if (other.gameObject.layer == LayerMask.NameToLayer("PowerUp")) return;
+
+        // if player is moving down and hits something above him
+        // bool playerBumpedHeadDuringJump = (other.contacts[0].normal.y) < 0f;
+        bool playerBumpedHeadDuringJump = transform.DotProductTest(other.transform, Vector2.up);
+
+        if (playerBumpedHeadDuringJump) {
+            isJumping = false;
+            velocity.y = 0f;
+        }
+    }
+
 }
