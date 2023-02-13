@@ -49,6 +49,15 @@ public class PlayerMovement : MonoBehaviour {
     }
 
 
+    void OnCollisionEnter2D(Collision2D other) {
+        bool playerBumpedHeadDuringJump = (other.contacts[0].normal.y) < 0f;
+        if (playerBumpedHeadDuringJump) {
+            isJumping = false;
+            velocity.y = 0f;
+        }
+    }
+
+
     private void HorizontalMovement() {
         float inputAxis = Input.GetAxisRaw("Horizontal");
         velocity.x = Mathf.MoveTowards(velocity.x, inputAxis * moveSpeed, moveSpeed * Time.deltaTime);
@@ -60,7 +69,7 @@ public class PlayerMovement : MonoBehaviour {
         isJumping = velocity.y > 0f;
 
         if (Input.GetButtonDown("Jump")) {
-            Debug.Log("Jumping");
+            // Debug.Log("Jumping");
             isJumping = true;
             velocity.y = jumpForce;
         }
@@ -69,7 +78,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void MidAirMovement() { 
         if (Input.GetButtonUp("Jump")) {
-            Debug.Log("Not Jumping");
+            // Debug.Log("Not Jumping");
             isJumping = false;
             if (velocity.y > 0) {
                 velocity.y = Mathf.MoveTowards(velocity.y, 0f, gravity * Time.deltaTime);
