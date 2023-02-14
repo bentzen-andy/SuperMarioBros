@@ -13,11 +13,14 @@ public class PlayerMovement : MonoBehaviour {
     public float maxJumpTime = 1f;
 
     // derived values
+    public float directionX;
     public float jumpForce =>  (2f * maxJumpHeight) / (maxJumpTime / 2f);
     public float gravity => -(2f * maxJumpHeight) / (maxJumpTime * maxJumpTime / 4f);
 
     public bool isGrounded {get; private set;}
     public bool isJumping {get; private set;}
+    public bool isRunning => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(directionX) > 0.25f;
+    public bool isSliding => directionX > 0 && velocity.x < 0 || directionX < 0 && velocity.x > 0;
 
 
     private void Awake() {
@@ -28,6 +31,7 @@ public class PlayerMovement : MonoBehaviour {
 
 
     private void Update() {
+        directionX = Input.GetAxisRaw("Horizontal");
         HorizontalMovement();
 
         isGrounded = rigidbody.Raycast(Vector2.down);
@@ -62,12 +66,9 @@ public class PlayerMovement : MonoBehaviour {
 
     // allows player to move left and right
     private void HorizontalMovement() {
-        float directionX = Input.GetAxisRaw("Horizontal");
+        
 
-        bool isChangingToDirectionRight = directionX > 0 && velocity.x < 0;
-        bool isChangingToDirectionLeft = directionX < 0 && velocity.x > 0;
-
-        if (isChangingToDirectionRight || isChangingToDirectionLeft) {
+        if (isSliding) {
             velocity.x = Mathf.MoveTowards(velocity.x, 0f, moveSpeed * Time.deltaTime);
         }
 

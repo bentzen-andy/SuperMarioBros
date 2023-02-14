@@ -137,6 +137,7 @@ MonoBehaviour:
   moveSpeed: 5
   maxJumpHeight: 5
   maxJumpTime: 1
+  directionX: 0
 --- !u!50 &2984058765168080644
 Rigidbody2D:
   serializedVersion: 4
