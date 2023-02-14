@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour {
 
     // stops player from jumping if they hit their head
     void OnCollisionEnter2D(Collision2D other) {
-        checkIfPlayerBumpedHead(other);
+        CheckIfPlayerBumpedHead(other);
     }
 
 
@@ -125,7 +125,7 @@ public class PlayerMovement : MonoBehaviour {
 
 
     // stops player from jumping if they hit their head
-    private void checkIfPlayerBumpedHead(Collision2D other) {
+    private void CheckIfPlayerBumpedHead(Collision2D other) {
         // Mario can't bump his head on power ups
         if (other.gameObject.layer == LayerMask.NameToLayer("PowerUp")) return;
 
