@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6196497498077565661}
   - component: {fileID: 6012764838399657978}
   - component: {fileID: 1181008629834642408}
+  - component: {fileID: -1564741575830013273}
   m_Layer: 7
   m_Name: Goomba
   m_TagString: Untagged
@@ -154,4 +155,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
+  direction: {x: -1, y: 0}
   moveSpeed: 2
+--- !u!114 &-1564741575830013273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435310695878363333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d6b3b944e654a85b98b1461745047c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flatSprite: {fileID: 21300000, guid: 67a794b8c89df4d1abd75adffec4bc59, type: 3}

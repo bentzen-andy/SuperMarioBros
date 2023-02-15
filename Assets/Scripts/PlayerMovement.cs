@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour {
     // stops player from jumping if they hit their head
     void OnCollisionEnter2D(Collision2D other) {
         CheckIfPlayerBumpedHead(other);
+        CheckIfPlayerJumpedOnEnemy(other);
     }
 
 
@@ -130,12 +131,23 @@ public class PlayerMovement : MonoBehaviour {
         if (other.gameObject.layer == LayerMask.NameToLayer("PowerUp")) return;
 
         // if player is moving down and hits something above him
-        bool playerBumpedHeadDuringJump = (other.contacts[0].normal.y) < 0f;
-        // bool playerBumpedHeadDuringJump = transform.DotProductTest(other.transform, Vector2.up);
+        // bool playerBumpedHeadDuringJump = (other.contacts[0].normal.y) < 0f;
+        bool playerBumpedHeadDuringJump = transform.DotProductTest(other.transform, Vector2.up);
 
         if (playerBumpedHeadDuringJump) {
             isJumping = false;
             velocity.y = 0f;
+        }
+    }
+ 
+    
+    private void CheckIfPlayerJumpedOnEnemy(Collision2D other) {
+        if (other.gameObject.layer != LayerMask.NameToLayer("Enemy")) return;
+        bool playerLandedOnEnemy = transform.DotProductTest(other.transform, Vector2.down);
+        if (playerLandedOnEnemy) {
+            if (other.gameObject.name == "Goomba") {
+                velocity.y = jumpForce;
+            }
         }
     }
 
