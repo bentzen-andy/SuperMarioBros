@@ -14,6 +14,9 @@ public class Goomba : MonoBehaviour {
             if (other.transform.DotProductTest(transform, Vector2.down)) {
                 // player is moving down and landed on goomba
                 FlattenGoomba();
+            } else {
+                // player got hit by goomba
+                other.gameObject.GetComponent<Player>().Hit();
             }
         }
     }
@@ -24,7 +27,7 @@ public class Goomba : MonoBehaviour {
         GetComponent<EntityMovement>().enabled = false;
         GetComponent<AnimatedSprite>().enabled = false;
         GetComponent<SpriteRenderer>().sprite = flatSprite;
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 2f);
     }
 
 

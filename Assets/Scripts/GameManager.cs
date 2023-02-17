@@ -28,13 +28,13 @@ public class GameManager : MonoBehaviour {
     }
 
 
-    private void StartNewGame() {
+    public void StartNewGame() {
         lives = 3;
         LoadLevel(1, 1);
     }
 
 
-    private void LoadLevel(int world, int stage) {
+    public void LoadLevel(int world, int stage) {
         this.world = world;
         this.stage = stage;
 
@@ -42,14 +42,19 @@ public class GameManager : MonoBehaviour {
     }
 
 
-    private void LoadNextLevel() {
+    public void LoadNextLevel() {
         if (stage < 3) LoadLevel(world, stage + 1);
         else if (world <= 2) LoadLevel(world + 1, 1);
         else GameOver();
     }
 
 
-    public void HandlePlayerDeath() {
+    public void ResetLevel(float delay) {
+        Invoke(nameof(ResetLevel), delay);
+    }
+
+
+    public void ResetLevel() {
         lives--;
         if (lives > 0) LoadLevel(world, stage);
         else GameOver();
@@ -58,8 +63,7 @@ public class GameManager : MonoBehaviour {
 
     private void GameOver() {
         Debug.Log("Game Over");
-        // load the game over scene
-        // revert to main menu
-        Invoke(nameof(StartNewGame), 3f);
+        // TODO load the game over scene
+        // TODO revert to main menu
     }
 }

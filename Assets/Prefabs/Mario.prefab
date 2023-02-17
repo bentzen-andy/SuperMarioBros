@@ -93,9 +93,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5908575771130941537}
-  - component: {fileID: 2687781997673391334}
   - component: {fileID: 2984058765168080644}
   - component: {fileID: 6105868628663868292}
+  - component: {fileID: -6011605444220437183}
+  - component: {fileID: 2687781997673391334}
+  - component: {fileID: -4956536177465789417}
   m_Layer: 3
   m_Name: Mario
   m_TagString: Player
@@ -120,24 +122,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2687781997673391334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669711749125938941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad6ef86641f8d450ba2a329d8ca94c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0}
-  playerWidth: 0
-  moveSpeed: 5
-  maxJumpHeight: 5
-  maxJumpTime: 1
-  directionX: 0
 --- !u!50 &2984058765168080644
 Rigidbody2D:
   serializedVersion: 4
@@ -175,6 +159,55 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
+--- !u!114 &-6011605444220437183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669711749125938941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 930a3d308dfdd4b538cbb6c456f95131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRendererBig: {fileID: 0}
+  spriteRendererSmall: {fileID: 0}
+  deathAnimation: {fileID: 0}
+--- !u!114 &2687781997673391334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669711749125938941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6ef86641f8d450ba2a329d8ca94c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0}
+  playerWidth: 0
+  moveSpeed: 5
+  maxJumpHeight: 5
+  maxJumpTime: 1
+  directionX: 0
+--- !u!114 &-4956536177465789417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669711749125938941}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abfb36e13e254c60a059b1b4952e44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  deadSprite: {fileID: 21300000, guid: 313bda3d4de574610971261837fd0270, type: 3}
+  deathDuration: 5.64
+  elapsedTime: 0
 --- !u!1 &6566611492669330427
 GameObject:
   m_ObjectHideFlags: 0
