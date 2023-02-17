@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour {
 
     private void GameOver() {
         Debug.Log("Game Over");
+        StartNewGame();
         // TODO load the game over scene
         // TODO revert to main menu
     }

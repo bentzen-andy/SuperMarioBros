@@ -5,9 +5,9 @@ public class PlayerSpriteRenderer : MonoBehaviour {
     private PlayerMovement movement;
 
     public Sprite idle;
-    public AnimatedSprite run;
     public Sprite jump;
     public Sprite slide;
+    public AnimatedSprite run;
 
     private void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -22,6 +22,7 @@ public class PlayerSpriteRenderer : MonoBehaviour {
 
     private void OnDisable() {
         spriteRenderer.enabled = false;
+        run.enabled = false;
     }
 
 

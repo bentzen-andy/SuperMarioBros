@@ -145,7 +145,7 @@ public class PlayerMovement : MonoBehaviour {
         if (other.gameObject.layer != LayerMask.NameToLayer("Enemy")) return;
         bool playerLandedOnEnemy = transform.DotProductTest(other.transform, Vector2.down);
         if (playerLandedOnEnemy) {
-            if (other.gameObject.name == "Goomba") {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
                 velocity.y = jumpForce;
             }
         }

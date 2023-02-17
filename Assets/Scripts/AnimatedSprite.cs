@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AnimatedSprite : MonoBehaviour {
     public Sprite[] sprites;
-    public float fps = 10f;
+    public float fps = 1/6f;
 
     private SpriteRenderer spriteRenderer;
     private int frame = 0;

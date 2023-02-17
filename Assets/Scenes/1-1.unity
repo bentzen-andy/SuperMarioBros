@@ -7161,6 +7161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcb3faf1a5cf46d7bdd0a8a22562f8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  movement: {fileID: 0}
   idle: {fileID: 21300000, guid: b22d042a78aca4d8497c1078a5d22d60, type: 3}
   run: {fileID: 1301992875}
   jump: {fileID: 21300000, guid: edc15cbaf852e44c6b8315dd9d219b60, type: 3}
@@ -7182,7 +7184,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 027955aaa096b42149cd7619b458335f, type: 3}
   - {fileID: 21300000, guid: b8f0352ffa50d46f894c8857184a065d, type: 3}
   - {fileID: 21300000, guid: 027955aaa096b42149cd7619b458335f, type: 3}
-  fps: 0.16666667
+  fps: 0.1666667
 --- !u!1001 &1339802431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11215,6 +11217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcb3faf1a5cf46d7bdd0a8a22562f8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  movement: {fileID: 0}
   idle: {fileID: 21300000, guid: eb26e623581d24c8a8e982f24fb25a0d, type: 3}
   run: {fileID: 2120626408}
   jump: {fileID: 21300000, guid: 1042d2cbb6be3402f9467735b6648dd8, type: 3}
@@ -11226,7 +11230,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120626404}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c226f6ebdaec6408194888f742dfcebf, type: 3}
   m_Name: 
