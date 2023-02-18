@@ -12571,6 +12571,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3659573999444789481, guid: 440aff781d8194e73b7a0e5f138dae6b, type: 3}
+      propertyPath: castle
+      value: 
+      objectReference: {fileID: 436475480}
     - target: {fileID: 8636014163319774587, guid: 440aff781d8194e73b7a0e5f138dae6b, type: 3}
       propertyPath: m_Name
       value: FlagPole
@@ -13639,7 +13643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5908575771130941537, guid: b51b5290567c8492181bdd94a74e14d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.83
+      value: 5.11
       objectReference: {fileID: 0}
     - target: {fileID: 5908575771130941537, guid: b51b5290567c8492181bdd94a74e14d1, type: 3}
       propertyPath: m_LocalPosition.y
