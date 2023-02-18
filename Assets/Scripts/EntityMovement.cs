@@ -54,7 +54,7 @@ public class EntityMovement : MonoBehaviour {
 
     private void Move() {
         velocity.x = direction.x * moveSpeed;
-        velocity.y += Physics2D.gravity.y * Time.fixedDeltaTime;
+        velocity.y += Physics2D.gravity.y * Time.fixedDeltaTime;   // FIXME this is causing his y velocity to build up. 
         rigidbody.MovePosition(rigidbody.position + velocity * Time.fixedDeltaTime);
 
 
