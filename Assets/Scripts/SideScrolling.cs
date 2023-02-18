@@ -3,6 +3,8 @@ using UnityEngine;
 public class SideScrolling : MonoBehaviour {
 
     private Transform player;
+    public float height = 8f;
+    public float undergroundHeight = -7f;
 
 
     private void Awake() {
@@ -11,10 +13,15 @@ public class SideScrolling : MonoBehaviour {
 
 
     private void LateUpdate() {
-        // transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
-
         Vector3 cameraPosition = transform.position;
         cameraPosition.x = Mathf.Max(player.position.x, transform.position.x);
+        transform.position = cameraPosition;
+    }
+
+
+    public void SetUnderground(bool isUnderground) {
+        Vector3 cameraPosition = transform.position;
+        cameraPosition.y = isUnderground ? undergroundHeight : height;
         transform.position = cameraPosition;
     }
 
