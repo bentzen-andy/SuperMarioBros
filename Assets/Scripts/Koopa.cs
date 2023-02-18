@@ -7,26 +7,32 @@ public class Koopa : MonoBehaviour {
     private bool pushed;
 
     private void OnCollisionEnter2D(Collision2D collision) {
+        Player player = collision.gameObject.GetComponent<Player>();
+        if (player != null && player.starPower) Hit();
+        if (player != null && player.starPower) return; 
+
         if (!shelled && collision.gameObject.CompareTag("Player")) {
             Debug.Log("jumped on koopa's head");
 
             if (collision.transform.DotProductTest(transform, Vector2.down)) {
                 EnterShell();
             } else {
-                Player player = collision.gameObject.GetComponent<Player>();
                 player.Hit();
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        Player player = collision.gameObject.GetComponent<Player>();
+        if (player != null && player.starPower) Hit();
+        if (player != null && player.starPower) return;
+
         if (shelled && collision.CompareTag("Player")) {
             Debug.Log("touched a shelled koopa");
             if (!pushed) {
                 Vector2 direction = new Vector2(transform.position.x - collision.transform.position.x, 0f);
                 PushShell(direction);
             } else {
-                Player player = collision.gameObject.GetComponent<Player>();
                 player.Hit();
             }
         } else if (!shelled && collision.gameObject.layer == LayerMask.NameToLayer("Shell")) {

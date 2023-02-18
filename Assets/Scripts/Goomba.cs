@@ -1,22 +1,22 @@
 using UnityEngine;
 
 public class Goomba : MonoBehaviour {
-    // todo add collision detection between mario and goomba
-    // todo make goomba flat when mario jumps on him
 
     public Sprite flatSprite;
-    // private new Rigidbody2D rigidbody;
-    // private bool isStomped = false;
 
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Player")) {
+            Player player = other.gameObject.GetComponent<Player>();
+            if (player != null && player.starPower) Hit();
+            if (player != null && player.starPower) return; 
+
             if (other.transform.DotProductTest(transform, Vector2.down)) {
                 // player is moving down and landed on goomba
                 FlattenGoomba();
             } else {
                 // player got hit by goomba
-                other.gameObject.GetComponent<Player>().Hit();
+                player.Hit();
             }
         }
     }

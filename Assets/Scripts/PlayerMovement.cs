@@ -143,10 +143,11 @@ public class PlayerMovement : MonoBehaviour {
     
     private void CheckIfPlayerJumpedOnEnemy(Collision2D other) {
         if (other.gameObject.layer != LayerMask.NameToLayer("Enemy")) return;
+        Player player = gameObject.GetComponent<Player>();
         bool playerLandedOnEnemy = transform.DotProductTest(other.transform, Vector2.down);
         if (playerLandedOnEnemy) {
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-                velocity.y = jumpForce;
+                if (!player.starPower) velocity.y = jumpForce;
             }
         }
     }

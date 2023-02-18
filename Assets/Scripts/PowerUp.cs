@@ -9,6 +9,7 @@ public class PowerUp : MonoBehaviour {
     }
 
     public PowerUpType powerUpType; 
+    public float starPowerDuration = 10f;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
@@ -30,7 +31,7 @@ public class PowerUp : MonoBehaviour {
                 player.GetComponent<Player>().Grow();
                 break;
             case PowerUpType.StarPower: 
-                // todo
+                player.GetComponent<Player>().StarPower(starPowerDuration);
                 break;
         }
         Destroy(gameObject);
