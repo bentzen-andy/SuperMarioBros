@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
             Shrink();
         }
         else if (isSmall) {
-            Death(); // TODO uncomment htis
+            Death(); 
         }
     }
 
