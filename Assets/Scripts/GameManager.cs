@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public int world { get; private set; }
     public int stage { get; private set; }
     public int lives { get; private set; }
+    public int coins { get; private set; }
 
     public void Awake() {
         if (Instance != null) DestroyImmediate(gameObject);
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour {
 
     public void StartNewGame() {
         lives = 3;
+        coins = 0;
         LoadLevel(1, 1);
     }
 
@@ -66,5 +68,19 @@ public class GameManager : MonoBehaviour {
         StartNewGame();
         // TODO load the game over scene
         // TODO revert to main menu
+    }
+
+
+    public void AddCoin() {
+        coins++;
+        if (coins == 100) {
+            coins = 0;
+            AddLife();
+        }
+    }
+
+
+    public void AddLife() {
+        lives ++;
     }
 }

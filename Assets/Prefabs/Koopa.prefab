@@ -180,9 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4b00fab550247ed958f22989ad3478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0}
+  speed: 2
   direction: {x: -1, y: 0}
-  moveSpeed: 2
 --- !u!114 &-7865625461293032746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abfb36e13e254c60a059b1b4952e44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpriteRenderer: {fileID: 0}
   spriteRenderer: {fileID: 384458296719015199}
   deadSprite: {fileID: 21300000, guid: 0900ed63acbc2471e95d110195b28291, type: 3}
   deathDuration: 3

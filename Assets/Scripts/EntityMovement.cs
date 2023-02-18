@@ -3,7 +3,7 @@ using UnityEngine;
 public class EntityMovement : MonoBehaviour {
     private new Rigidbody2D rigidbody;
 
-    public Vector2 velocity;
+    private Vector2 velocity;
     public Vector2 direction = Vector2.left;
     public float moveSpeed = 2f;
 
@@ -26,7 +26,6 @@ public class EntityMovement : MonoBehaviour {
 
     private void OnEnable() {
         rigidbody.WakeUp();
-        // velocity = new Vector2(-moveSpeed, 0);
     }
 
 
@@ -41,22 +40,11 @@ public class EntityMovement : MonoBehaviour {
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        CheckForBarrier(collision);
-    }
-
-
-    private void CheckForBarrier(Collision2D collision) {
-        bool entityHitABarrier = (Mathf.Abs(collision.contacts[0].normal.x)) > 0f;
-        if (entityHitABarrier) direction.x *= -1f;
-    }
-
-
     private void Move() {
         velocity.x = direction.x * moveSpeed;
-        velocity.y += Physics2D.gravity.y * Time.fixedDeltaTime;   // FIXME this is causing his y velocity to build up. 
-        rigidbody.MovePosition(rigidbody.position + velocity * Time.fixedDeltaTime);
+        velocity.y += Physics2D.gravity.y * Time.fixedDeltaTime;
 
+        rigidbody.MovePosition(rigidbody.position + velocity * Time.fixedDeltaTime);
 
         if (rigidbody.Raycast(direction)) {
             direction = -direction;
