@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2200362464340551682}
   - component: {fileID: 412131789923628193}
   - component: {fileID: 7965081478583975907}
+  - component: {fileID: 4360760835647359989}
   m_Layer: 6
   m_Name: Star Man
   m_TagString: Untagged
@@ -176,5 +177,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4b00fab550247ed958f22989ad3478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
   direction: {x: 1, y: 0}
+  moveSpeed: 2
+--- !u!114 &4360760835647359989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641815974900014361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c19971f4787a45dc8023ce5f1baf654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpType: 3

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6491251236302683994}
   - component: {fileID: 3844290363224968189}
   - component: {fileID: 2489560949299172377}
+  - component: {fileID: 202249170381179396}
   m_Layer: 6
   m_Name: Magic Mushroom
   m_TagString: Untagged
@@ -178,3 +179,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 1, y: 0}
   moveSpeed: 3
+--- !u!114 &202249170381179396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3562695620232150254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c19971f4787a45dc8023ce5f1baf654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpType: 2
